@@ -1,0 +1,38 @@
+.mat-card {
+    margin: 4px 4px 4px 4px;
+    padding: 4px;
+}
+#matcard {
+  height: 88%;
+  overflow: hidden;
+  width: 99.5%;
+  position: absolute;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+  
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+}
+.rightli {
+    float: right;
+}
+li a:hover {
+    background-color: rgba(12, 11, 11, 0.055);
+}
+.active {
+    background-color: rgba(12, 11, 11, 0.055);
+}

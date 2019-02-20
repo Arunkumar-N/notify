@@ -1,0 +1,112 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      Rule Creation
+    </mat-card-header>
+    <mat-card-content>
+      <br>
+      <div class="row"> Notify
+        <div class="col-1">
+          <mat-select placeholder="User" [(ngModel)]="rule.notifier">
+            <mat-option *ngFor="let user of users" [value]="user.name">
+              {{user.name}}  
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class="col-2">
+            <mat-select placeholder="schedules" [(ngModel)]="rule.schedule">
+                <mat-option *ngFor="let schedule of schedules" [value]="schedule">
+                  {{schedule}}
+                </mat-option>
+              </mat-select>
+        </div>at
+        <div class="col-2">
+            <mat-select placeholder="Time" [(ngModel)]="rule.time">
+                <mat-option *ngFor="let schedule of scheduleTimes" [value]="schedule">
+                  {{schedule}}
+                </mat-option>
+              </mat-select>
+        </div>
+        <div class="col-1">
+            <mat-select placeholder="mode" [(ngModel)]="rule.alertMode">
+                <mat-option *ngFor="let mode of modes" [value]="mode">
+                  {{mode}}
+                </mat-option>
+              </mat-select>
+        </div>if my &ensp;
+        <div class="col-2">
+            <mat-select placeholder="rule" [(ngModel)]="rule.ruleCriteria">
+                <mat-option *ngFor="let rule of ruleCriteria" [value]="rule">
+                  {{rule}}
+                </mat-option>
+              </mat-select>
+        </div>
+        <div class="col-2">
+          performance idicates that
+        </div>
+      </div><br>
+      <div class="row" *ngFor="let criteria of rule.criterias; let i=index">
+          {{i+1}})
+        <div class="col-2">
+          <mat-select placeholder="type" [(ngModel)]="criteria.type">
+            <mat-option *ngFor="let type of criteriaType" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class="col-2">
+            <mat-select placeholder="Notation" [(ngModel)]="criteria.notation">
+                <mat-option *ngFor="let notation of criteriaNotations" [value]="notation">
+                  {{notation}}
+                </mat-option>
+              </mat-select>
+        </div>
+        <div class="col-2" > 
+          <input matInput placeholder="Value" [(ngModel)]="criteria.value" type="number"/>
+        </div>
+        <div class="col-1" *ngIf="criteria.notation==='is greater by'"> 
+          <span class="spanBox" (click)="criteria.percent=!criteria.percent" [ngStyle]="{'background-color':criteria.percent ? 'lightblue' : ''}">%</span> &nbsp;
+          <span class="spanBox" (click)="criteria.percent=!criteria.percent" [ngStyle]="{'background-color':!criteria.percent ? 'lightblue' : ''}">#</span></div>
+        <div class="col-1" *ngIf="criteria.notation==='is greater by'"> 
+          compared to</div>
+        <div class="col-2" *ngIf="criteria.notation==='is greater by'">
+          <mat-select placeholder="Compared to" [(ngModel)]="criteria.comparedTo">
+            <mat-option *ngFor="let compare of criteriaComparedTo" [value]="compare">
+              {{compare}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class="col-4" *ngIf="criteria.notation!='is greater by'"></div>
+        <div class="col-1">
+          <i class="fas fa-minus-circle" style="font-size:18px"></i> &nbsp;
+          <i class="fas fa-plus-circle" *ngIf="i===rule.criterias.length-1" style="font-size:18px"></i> 
+        </div><br><br>
+        <div class="col-12">&nbsp;
+            <mat-radio-group [(ngModel)]="criteria.andOr">
+                <mat-radio-button value="and">and</mat-radio-button> &nbsp;
+                <mat-radio-button value="or">or</mat-radio-button>
+              </mat-radio-group>
+        </div>
+      </div><br>
+      <div>
+          Criteria Pattern: <input matInput placeholder="pattern" (keyup.enter)="editPattern=!editPattern" [disabled]="!editPattern" [(ngModel)]="rule.pattern"/> &nbsp; 
+          <i class="fas fa-pen" (click)="editPattern=!editPattern" style="font-size:18px"></i><br><br>
+
+          <i class="fas fa-filter" style="font-size:18px"></i> Account <br><br>
+    
+          <mat-checkbox class="example-margin" [(ngModel)]="rule.account"> and also make these changes</mat-checkbox> &nbsp;&nbsp;
+          <i class="fas fa-info-circle" style="font-size:18px"></i> <br><br>
+
+          Title <input matInput placeholder="Title" [(ngModel)]="rule.title"/>
+      </div>
+
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <button mat-flat-button color="primary" (click)="onSave()">Save</button> &nbsp;
+            <button mat-stroked-button>Cancel</button>
+          </div>
+      </div><br>
+    </mat-card-footer>
+</mat-card>

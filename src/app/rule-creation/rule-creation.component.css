@@ -1,0 +1,14 @@
+.rightli {
+    float: right;
+}
+.mat-select {
+    border: 1px solid currentColor;
+    padding: 0 10px;
+    line-height: 25px;
+}
+.spanBox {
+    display: inline-block;
+    width:25px; 
+    border: 1px solid;
+    box-shadow: 5px 5px;
+}
